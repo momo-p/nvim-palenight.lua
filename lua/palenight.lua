@@ -325,4 +325,27 @@ vim.g.terminal_color_15         = white
 vim.g.terminal_color_background = bg_dark
 vim.g.terminal_color_foreground = fg_light
 
--- }}}
+-- i}}}
+
+return {
+    bg_darker      = bg_darker,
+    bg_dark        = bg_dark,
+    bg             = bg,
+    bg_light       = bg_light,
+    bg_lighter     = bg_lighter,
+    grey           = grey,
+    red            = red,
+    heavy_red      = heavy_red,
+    green          = green,
+    blue           = blue,
+    yellow         = yellow,
+    orange         = orange,
+    purple         = purple,
+    cyan           = cyan,
+    fg             = fg,
+    fg_light       = fg_light,
+    fg_dark        = fg_dark,
+    hollow         = hollow,
+    hollow_lighter = hollow_lighter,
+    white          = white
+}
