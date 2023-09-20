@@ -1,0 +1,22 @@
+return {
+    bg_darker      = '#121622',
+    bg_dark        = '#1b1e2b',
+    bg             = '#292d3e',
+    bg_light       = '#32374d',
+    bg_lighter     = '#444267',
+    grey           = '#8796b0',
+    red            = '#f07178',
+    heavy_red      = '#ff5370',
+    green          = '#c3e88d',
+    blue           = '#82aaff',
+    yellow         = '#ffcb6b',
+    orange         = '#f78c6c',
+    purple         = '#c792ea',
+    cyan           = '#89ddff',
+    fg             = '#959dcb',
+    fg_light       = '#a6accd',
+    fg_dark        = '#676e96',
+    hollow         = '#424760',
+    hollow_lighter = '#30354e',
+    white          = '#ffffff'
+}
