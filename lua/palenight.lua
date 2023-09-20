@@ -134,7 +134,7 @@ local code_syntax = {
     Float          = { fg = orange },
     Boolean        = { fg = orange },
 
-    Identifier     = { fg = heavy_red },
+    Identifier     = { fg = fg_light },
     Function       = { fg = cyan, gui = 'italic' },
 
     Statement      = { fg = blue, gui = 'italic' },
@@ -143,7 +143,7 @@ local code_syntax = {
     Label          = { fg = cyan, gui = 'italic' },
     Exception      = { fg = cyan, gui = 'italic' },
     Operator       = { fg = cyan },
-    Keyword        = { fg = heavy_red },
+    Keyword        = { fg = purple },
 
     Include        = { fg = blue },
     Define         = { fg = purple },
@@ -325,7 +325,7 @@ vim.g.terminal_color_15         = white
 vim.g.terminal_color_background = bg_dark
 vim.g.terminal_color_foreground = fg_light
 
--- i}}}
+-- }}}
 
 return {
     bg_darker      = bg_darker,
