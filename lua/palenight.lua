@@ -15,26 +15,44 @@ local function highlight(group, styles)
     vim.api.nvim_command('highlight '..group..' '..gui..' '..sp..' '..fg..' '..bg)
 end
 
-local bg_darker      = '#121622'
-local bg_dark        = '#1b1e2b'
-local bg             = '#292d3e'
-local bg_light       = '#32374d'
-local bg_lighter     = '#444267'
-local grey           = '#8796b0'
-local red            = '#f07178'
-local heavy_red      = '#ff5370'
-local green          = '#c3e88d'
-local blue           = '#82aaff'
-local yellow         = '#ffcb6b'
-local orange         = '#f78c6c'
-local purple         = '#c792ea'
-local cyan           = '#89ddff'
-local fg             = '#959dcb'
-local fg_light       = '#a6accd'
-local fg_dark        = '#676e96'
-local hollow         = '#424760'
-local hollow_lighter = '#30354e'
-local white          = '#ffffff'
+local function load(modulename)
+  local errmsg = ""
+  for path in string.gmatch(package.path, "([^;]+)") do
+    local filename = string.gsub(path, "%?", modulename)
+    local file = io.open(filename, "rb")
+    if file then
+      -- Compile and return the module
+      return assert(loadstring(assert(file:read("*a")), filename))
+    end
+    errmsg = errmsg.."\n\tno file '"..filename.."' (checked with custom loader)"
+  end
+  return errmsg
+end
+
+table.insert(package.loaders, 2, load)
+
+local palette = load("palenight-palette")
+
+local bg_darker      = palette.bg_darker
+local bg_dark        = palette.bg_dark
+local bg             = palette.bg
+local bg_light       = palette.bg_light
+local bg_lighter     = palette.bg_lighter
+local grey           = palette.grey
+local red            = palette.red
+local heavy_red      = palette.heavy_red
+local green          = palette.green
+local blue           = palette.blue
+local yellow         = palette.yellow
+local orange         = palette.orange
+local purple         = palette.purple
+local cyan           = palette.cyan
+local fg             = palette.fg
+local fg_light       = palette.fg_light
+local fg_dark        = palette.fg_dark
+local hollow         = palette.hollow
+local hollow_lighter = palette.hollow_lighter
+local white          = palette.white
 
 -- }}}
 
@@ -124,7 +142,7 @@ end
 -- }}}
 
 -- Vim Default Code Syntax {{{
-            
+
 local code_syntax = {
     Comment        = { fg = fg_dark, gui = 'italic' },
     Constant       = { fg = cyan },
@@ -214,7 +232,7 @@ local lang_syntax = {
     luaConstant       = { fg = orange },
 
     -- zsh.vim
-    zshTodo            = code_syntax.Todo, 
+    zshTodo            = code_syntax.Todo,
     zshComment         = code_syntax.Comment,
     zshPreProc         = code_syntax.PreProc,
     zshString          = code_syntax.String,
@@ -286,7 +304,7 @@ local lang_syntax = {
     typescriptStringMethod      = { fg = blue },
     typescriptTypeReference     = { fg = yellow },
     typescriptObjectLabel       = { fg = red },
-    typescriptParens            = { fg = fg_light }, 
+    typescriptParens            = { fg = fg_light },
     typescriptTypeBrackets      = { fg = cyan },
     typescriptXHRMethod         = { fg = blue },
     typescriptResponseProp      = { fg = blue },
