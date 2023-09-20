@@ -15,23 +15,7 @@ local function highlight(group, styles)
     vim.api.nvim_command('highlight '..group..' '..gui..' '..sp..' '..fg..' '..bg)
 end
 
-local function load(modulename)
-  local errmsg = ""
-  for path in string.gmatch(package.path, "([^;]+)") do
-    local filename = string.gsub(path, "%?", modulename)
-    local file = io.open(filename, "rb")
-    if file then
-      -- Compile and return the module
-      return assert(loadstring(assert(file:read("*a")), filename))
-    end
-    errmsg = errmsg.."\n\tno file '"..filename.."' (checked with custom loader)"
-  end
-  return errmsg
-end
-
-table.insert(package.loaders, 2, load)
-
-local palette = load("palenight-palette")
+local palette = require("palenight-palette")
 
 local bg_darker      = palette.bg_darker
 local bg_dark        = palette.bg_dark
